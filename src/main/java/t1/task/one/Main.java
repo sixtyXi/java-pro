@@ -1,7 +1,13 @@
 package t1.task.one;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        try {
+            TestRunner.runTests(Testable.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

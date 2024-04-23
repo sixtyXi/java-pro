@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(5, 2, 10, 9, 4, 3, 10, 1, 13);
+        List<Integer> list = Arrays.asList(5, 2, 3);
         List<Employee> employees = Arrays.asList(
                 new Employee("Vasya", 20, "developer"),
                 new Employee("Petya", 25, "developer"),
@@ -39,10 +39,16 @@ public class Main {
     }
 
     static int getThirdMax(List<Integer> list) {
+        if (list.size() < 3) {
+           throw new IllegalArgumentException("Длина списка должна быть не меньше 3");
+        }
         return list.stream().sorted((prev, next) -> next - prev).toList().get(2);
     }
 
     static int getThirdMaxUniq(List<Integer> list) {
+        if (list.size() < 3) {
+            throw new IllegalArgumentException("Длина списка должна быть не меньше 3");
+        }
         return list.stream().distinct().sorted((prev, next) -> next - prev).toList().get(2);
     }
 
@@ -55,6 +61,9 @@ public class Main {
     }
 
     static String getLongestWord(List<String> words) {
+        if (words.isEmpty()) {
+            throw new IllegalArgumentException("Длина списка должна быть не меньше 1");
+        }
         return words.stream().sorted((prev, next) -> next.length() - prev.length()).toList().get(0);
     }
 
